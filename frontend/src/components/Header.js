@@ -7,12 +7,16 @@ function Header() {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="bg-white shadow-sm border-b sticky top-0 z-50">
+    <header className="bg-#111827 shadow-sm border-b sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold text-gray-900 gradient-text">
-            Virtual Panel
-          </Link>
+          <Link
+  to="/"
+  className="text-2xl font-bold text-orange-400 gradient-text"
+  style={{ fontFamily: "'Homemade Apple', cursive" }}
+>
+  Virtual Panel
+</Link>
           
           <nav className="hidden md:flex space-x-8">
             <Link 
@@ -20,7 +24,7 @@ function Header() {
               className={`transition-colors duration-200 ${
                 isActive('/') 
                   ? 'text-primary-600 font-semibold' 
-                  : 'text-gray-600 hover:text-gray-900'
+                  : 'text-gray-100 hover:text-gray-900'
               }`}
             >
               Home
@@ -30,7 +34,7 @@ function Header() {
               className={`transition-colors duration-200 ${
                 isActive('/resume-score') 
                   ? 'text-primary-600 font-semibold' 
-                  : 'text-gray-600 hover:text-gray-900'
+                  : 'text-gray-100 hover:text-gray-900'
               }`}
             >
               Resume Score
@@ -40,7 +44,7 @@ function Header() {
               className={`transition-colors duration-200 ${
                 isActive('/interview') 
                   ? 'text-primary-600 font-semibold' 
-                  : 'text-gray-600 hover:text-gray-900'
+                  : 'text-gray-100 hover:text-gray-900'
               }`}
             >
               Mock Interview

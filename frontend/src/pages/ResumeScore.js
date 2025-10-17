@@ -89,8 +89,8 @@ function ResumeScore() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Resume ATS Score</h1>
-        <p className="text-xl text-gray-600">
+        <h1 className="text-4xl font-bold text-gray-100 mb-4">Resume ATS Score</h1>
+        <p className="text-xl text-gray-300">
           Upload your resume and get an instant ATS score with improvement suggestions
         </p>
       </div>
@@ -114,10 +114,10 @@ function ResumeScore() {
               </svg>
               
               <div className="space-y-2">
-                <p className="text-lg font-medium text-gray-900">
+                <p className="text-lg font-medium text-gray-100">
                   {file ? file.name : 'Drop your PDF resume here'}
                 </p>
-                <p className="text-gray-500">or</p>
+                <p className="text-gray-100">or</p>
                 <label className="btn-primary cursor-pointer inline-block">
                   Choose PDF File
                   <input
@@ -197,7 +197,7 @@ function ResumeScore() {
 
           {/* Improvement Suggestions */}
           <div className="card">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Improvement Suggestions</h3>
+            <h3 className="text-xl font-bold text-gray-100 mb-4">Improvement Suggestions</h3>
             <ul className="space-y-3">
               {analysis.analysis.suggestions.map((suggestion, index) => (
                 <li key={index} className="flex items-start">

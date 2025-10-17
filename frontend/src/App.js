@@ -11,7 +11,7 @@ function App() {
   return (
     <AppProvider>
       <Router>
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+       <div className="dark bg-gray-900 text-gray-100 min-h-screen">
           <Header />
           <main className="container mx-auto px-4 py-8">
             <Routes>

@@ -121,36 +121,36 @@ function Interview() {
       {step === 'setup' && (
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Mock Interview</h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-100 mb-8">
             Get ready for your next interview with AI-powered practice questions
           </p>
 
           <div className="card max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Setup Your Interview</h2>
+            <h2 className="text-2xl font-bold text-orange-400 mb-6">Setup Your Interview</h2>
             
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-100 mb-2">
                   Your Name (Optional)
                 </label>
                 <input
                   type="text"
                   value={userInfo.name}
                   onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  className="w-full px-3 py-2 text-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   placeholder="Enter your name"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-100 mb-2">
                   Target Role *
                 </label>
                 <input
                   type="text"
                   value={userInfo.role}
                   onChange={(e) => setUserInfo({ ...userInfo, role: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  className="w-full px-3 py-2 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   placeholder="e.g., Software Developer, Marketing Manager, Data Scientist"
                   required
                 />
@@ -201,10 +201,10 @@ function Interview() {
           {/* Current Question */}
           <div className="card">
             <div className="mb-6">
-              <h3 className="text-lg font-medium text-gray-700 mb-2">
+              <h3 className="text-lg font-medium text-gray-400 mb-2">
                 Interviewer asks:
               </h3>
-              <p className="text-xl text-gray-900 font-medium">
+              <p className="text-xl text-gray-100 font-medium">
                 {questions[currentQuestion]}
               </p>
             </div>
