@@ -20,7 +20,7 @@ const upload = multer({
 
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
 // Analyze resume endpoint
 router.post('/analyze', upload.single('resume'), async (req, res) => {
@@ -36,7 +36,7 @@ router.post('/analyze', upload.single('resume'), async (req, res) => {
 
     console.log('📄 Extracting text from PDF...');
     
-    // Extract text from PDF
+    
     const pdfData = await pdfParse(req.file.buffer);
     const resumeText = pdfData.text;
     
