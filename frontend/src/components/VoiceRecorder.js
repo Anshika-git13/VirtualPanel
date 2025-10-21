@@ -5,32 +5,35 @@ function VoiceRecorder({ onTranscript, isListening, onStart, onStop }) {
   const [interimTranscript, setInterimTranscript] = useState('');
   const recognitionRef = useRef(null);
 
+
+  useEffect(() => {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => console.log("🎤 Microphone ready"))
+      .catch(err => console.error("🚫 Mic permission denied:", err));
+  }, []);
+
+  
   useEffect(() => {
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
-      
+
       recognitionRef.current.continuous = true;
       recognitionRef.current.interimResults = true;
       recognitionRef.current.lang = 'en-US';
 
       recognitionRef.current.onresult = (event) => {
-        let interimTranscript = '';
-        let finalTranscript = '';
+        let interim = '';
+        let final = '';
 
         for (let i = event.resultIndex; i < event.results.length; i++) {
-          const transcript = event.results[i][0].transcript;
-          if (event.results[i].isFinal) {
-            finalTranscript += transcript;
-          } else {
-            interimTranscript += transcript;
-          }
+          const text = event.results[i][0].transcript;
+          if (event.results[i].isFinal) final += text;
+          else interim += text;
         }
 
-        setInterimTranscript(interimTranscript);
-        if (finalTranscript) {
-          setTranscript(prev => prev + finalTranscript);
-        }
+        setInterimTranscript(interim);
+        if (final) setTranscript(prev => prev + final);
       };
 
       recognitionRef.current.onerror = (event) => {
@@ -39,6 +42,7 @@ function VoiceRecorder({ onTranscript, isListening, onStart, onStop }) {
 
       recognitionRef.current.onend = () => {
         if (isListening) {
+          console.log("🔁 Restarting recognition...");
           recognitionRef.current.start();
         }
       };
@@ -51,12 +55,16 @@ function VoiceRecorder({ onTranscript, isListening, onStart, onStop }) {
     };
   }, [isListening]);
 
+  
   const startRecording = () => {
     if (recognitionRef.current) {
       setTranscript('');
       setInterimTranscript('');
       recognitionRef.current.start();
       onStart();
+      console.log("🎙️ Recording started");
+    } else {
+      console.warn("⚠️ SpeechRecognition not initialized");
     }
   };
 
@@ -65,6 +73,7 @@ function VoiceRecorder({ onTranscript, isListening, onStart, onStop }) {
       recognitionRef.current.stop();
       onStop();
       onTranscript(transcript + interimTranscript);
+      console.log("🛑 Recording stopped");
     }
   };
 
